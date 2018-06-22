@@ -1,0 +1,13 @@
+%coupled differential equations
+function dpsidt = dpsidt ( t, psi, x)
+    z = (x(1)+1)^2 + x(2)^2;
+    dpsidt(1) = -psi(3)*(1 - z^(-3/2)) - ...
+        psi(3)*(1+x(1))*3*(1+x(1))*z^(-5/2) - ...
+        psi(4)*x(2)*3*(x(1)+1)*z^(-5/2);
+    dpsidt(2) = - psi(3)*(1 + x(1))*3*x(2)*z^(-5/2) - ...
+        psi(4)*(1 - z^(-3/2)) - ...
+        psi(4)*x(2)*3*x(2)*z^(-5/2);
+    dpsidt(3) = -psi(1) + 2*psi(4);
+    dpsidt(4) = -psi(2) - 2*psi(3);
+    dpsidt = dpsidt';
+end
